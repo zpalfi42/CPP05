@@ -19,7 +19,7 @@ int	main( void )
 	std::cout << std::endl;
 	try
 	{
-		Bureaucrat	toohigh("low", 0);
+		Bureaucrat	toolow("low", 0);
 	}
 	catch(std::exception &e)
 	{
