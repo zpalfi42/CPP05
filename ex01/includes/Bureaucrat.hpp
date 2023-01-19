@@ -3,9 +3,10 @@
 
 # include <iostream>
 # include <exception>
+
 # include <Form.hpp>
 
-class Form;
+class	Form;
 
 class Bureaucrat
 {
@@ -38,8 +39,10 @@ public:
 
 	const std::string	getName( void ) const;
 	int					getGrade( void ) const;
-	void				moveGrade( int n );
-	void				signForm( Form &f );
+	void				upGrade( void );
+	void				downGrade( void );
+
+	void				signForm( Form &f ) const;
 };
 
 std::ostream	&operator<<( std::ostream &o, const Bureaucrat &b );

@@ -1,18 +1,62 @@
 #include <Bureaucrat.hpp>
+#include <Form.hpp>
 
 int	main( void )
 {
-	Form 		f("formular", 10, 4);
-	Bureaucrat	bob("Bob", 11);
+	Bureaucrat a;
+	std::cout << "Created " << a << std::endl;
+	Bureaucrat b("b", 150);
+	std::cout << "Created " << b << std::endl;
+	std::cout << std::endl;
 
-	std::cout << f << std::endl;
-	std::cout << bob << std::endl;
-	
-	bob.signForm(f);
-	bob.moveGrade(-10);
-	bob.signForm(f);
+	Form	FormA("FormA", 75, 75);
+	Form	FormB("FormB", 75, 75);
 
-	std::cout << std::endl << f << std::endl;
+	std::cout << a << std::endl << "Tried to sign" << std::endl << std::endl << FormA << std::endl;
+	a.signForm(FormA);
+	std::cout << "And the result was: " << FormA.getSign() << std::endl << std::endl;
 
-	return (0);
+	std::cout << b << std::endl << "Tried to sign" << std::endl << std::endl << FormB << std::endl;
+	std::cout << "And the result was:" << std::endl;
+	b.signForm(FormB);
+
+	try
+	{
+		std::cout << "Trying to create a Form with too high grade Sign:" << std::endl;
+		Form	tooHigh("TooHigh", 0, 10);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n' << std::endl;
+	}
+
+	try
+	{
+		std::cout << "Trying to create a Form with too high grade Execution:" << std::endl;
+		Form	tooHigh("TooHigh", 10, 0);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n' << std::endl;
+	}
+
+	try
+	{
+		std::cout << "Trying to create a Form with too low grade Sign:" << std::endl;
+		Form	tooLow("TooLow", 151, 140);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n' << std::endl;
+	}
+
+	try
+	{
+		std::cout << "Trying to create a Form with too low grade Execution:" << std::endl;
+		Form	tooLow("TooLow", 130, 151);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 }

@@ -1,15 +1,23 @@
 #include <Form.hpp>
 
-Form::Form( void ): _name("Undefinded"), _sign(false), _gradeS(1), _gradeE(1)
+Form::Form( void ): _name("Undefinded"), _sign(false), _gradeSign(1), _gradeExec(1)
 {
 }
 
-Form::Form( const Form &f ): _name(f._name), _sign(false), _gradeS(f._gradeS), _gradeE(f._gradeE)
+Form::Form( const Form &f ): _name(f._name), _sign(false), _gradeSign(f._gradeSign), _gradeExec(f._gradeExec)
 {
 }
 
-Form::Form( std::string name, int gradeS, int gradeE): _name(name), _sign(false), _gradeS(gradeS), _gradeE(gradeE)
+Form::Form( std::string name, int gradeS, int gradeE): _name(name), _sign(false), _gradeSign(gradeS), _gradeExec(gradeE)
 {
+	if (gradeS < 1)
+		throw (GradeTooHigh());
+	if (gradeS > 150)
+		throw(GradeTooLow());
+	if (gradeE < 1)
+		throw (GradeTooHigh());
+	if (gradeE > 150)
+		throw(GradeTooLow());
 }
 
 Form	&Form::operator=( const Form &f )
@@ -34,17 +42,17 @@ bool	Form::getSign( void ) const
 
 int		Form::getGradeS( void ) const
 {
-	return (this->_gradeS);
+	return (this->_gradeSign);
 }
 
 int		Form::getGradeE( void ) const
 {
-	return (this->_gradeE);
+	return (this->_gradeExec);
 }
 
-void	Form::beSigned( Bureaucrat &b)
+void	Form::beSigned( const Bureaucrat &b)
 {
-	if (this->_gradeS < b.getGrade())
+	if (this->_gradeSign < b.getGrade())
 		throw(Form::GradeTooLow());
 	this->_sign = true;
 }
@@ -56,7 +64,7 @@ const char	*Form::GradeTooHigh::what( void ) const throw()
 
 const char	*Form::GradeTooLow::what( void ) const throw()
 {
-	return ("grade is too low!");
+	return ("Exception: Grade is too low!");
 }
 
 std::ostream	&operator<<( std::ostream &o, const Form &f )

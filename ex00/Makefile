@@ -12,10 +12,10 @@ SRC			=	main.cpp   \
 				
 OBJ			=	$(addprefix $(OBJ_DIR), $(SRC:.cpp=.o))
 
-CC				=	clang++
+CC				=	c++
 CFLAGS			=	-Wall -Wextra -Werror -std=c++98
 
-$(OBJ_DIR)%.o:	$(SRC_DIR)%.cpp $(INCS)
+$(OBJ_DIR)%.o:	$(SRC_DIR)%.cpp $(INCS) Makefile
 		@mkdir -p $(OBJ_DIR)
 		$(CC) ${CFLAGS}  $(MAIN_INC) -o $@ -c $<
 

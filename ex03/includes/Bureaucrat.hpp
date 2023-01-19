@@ -4,6 +4,10 @@
 # include <iostream>
 # include <exception>
 
+# include <AForm.hpp>
+
+class	AForm;
+
 class Bureaucrat
 {
 private:
@@ -37,6 +41,9 @@ public:
 	int					getGrade( void ) const;
 	void				upGrade( void );
 	void				downGrade( void );
+
+	void				signForm( AForm &form ) const;
+	void				executeForm(AForm &form ) const;
 };
 
 std::ostream	&operator<<( std::ostream &o, const Bureaucrat &b );

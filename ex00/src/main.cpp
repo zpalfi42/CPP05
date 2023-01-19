@@ -9,19 +9,9 @@ int	main( void )
 	std::cout << std::endl;
 	try
 	{
-		Bureaucrat	toohigh("high", 151);
+		Bureaucrat	toolow("low", 151);
 	}
 	catch (std::exception &e)
-	{
-		std::cout << "Created with too high grade:" << std::endl;
-		std::cout << e.what() << std::endl;
-	}
-	std::cout << std::endl;
-	try
-	{
-		Bureaucrat	toolow("low", 0);
-	}
-	catch(std::exception &e)
 	{
 		std::cout << "Created with too low grade:" << std::endl;
 		std::cout << e.what() << std::endl;
@@ -29,21 +19,31 @@ int	main( void )
 	std::cout << std::endl;
 	try
 	{
-		a.moveGrade(-1);
+		Bureaucrat	toohigh("high", 0);
 	}
-	catch(const std::exception& e)
+	catch(std::exception &e)
 	{
-		std::cout << a << " moved to a too low grade:" << std::endl;
+		std::cout << "Created with too high grade:" << std::endl;
 		std::cout << e.what() << std::endl;
 	}
 	std::cout << std::endl;
 	try
 	{
-		b.moveGrade(1);
+		a.upGrade();
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << b << " moved to a too high grade:" << std::endl;
+		std::cout << a << " moved to a too high grade:" << std::endl;
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << std::endl;
+	try
+	{
+		b.downGrade();
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << b << " moved to a too low grade:" << std::endl;
 		std::cout << e.what() << std::endl;
 	}
 }

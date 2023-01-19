@@ -10,8 +10,8 @@ class Form
 private:
 	const std::string	_name;
 	bool				_sign;
-	const int			_gradeS;
-	const int			_gradeE;
+	const int			_gradeSign;
+	const int			_gradeExec;
 public:
 	/* Orthodoxal Canonical needs */
 	Form( void );
@@ -23,7 +23,7 @@ public:
 
 	/* Exercice needs */
 
-	Form( std::string name, int gradeS, int gradeE);
+	Form( std::string name, int gradeSing, int gradeExec);
 
 	class GradeTooHigh : public std::exception
 	{
@@ -42,7 +42,7 @@ public:
 	int			getGradeS( void ) const;
 	int			getGradeE( void ) const;
 
-	void		beSigned( Bureaucrat &b);
+	void		beSigned( const Bureaucrat &b );
 };
 
 std::ostream	&operator<<( std::ostream &o, const Form &f );

@@ -20,13 +20,18 @@ int		Bureaucrat::getGrade( void ) const
 	return (this->_grade);
 }
 
-void	Bureaucrat::moveGrade( int n )
+void	Bureaucrat::downGrade( void )
 {
-	if (this->_grade + n > 150)
-		throw (GradeTooHigh());
-	if (this->_grade + n < 1)
+	if (this->_grade + 1 > 150)
 		throw (GradeTooLow());
-	this->_grade += n;
+	this->_grade++;
+}
+
+void	Bureaucrat::upGrade( void )
+{
+	if (this->_grade - 1 < 1)
+		throw (GradeTooHigh());
+	this->_grade--;
 }
 
 Bureaucrat::Bureaucrat( void ): _name("Undefined"), _grade(1)
@@ -36,9 +41,9 @@ Bureaucrat::Bureaucrat( void ): _name("Undefined"), _grade(1)
 Bureaucrat::Bureaucrat( std::string name, int grade ): _name(name)
 {
 	if (grade < 1)
-		throw (GradeTooLow());
+		throw (GradeTooHigh());
 	if (grade > 150)
-		throw(GradeTooHigh());
+		throw(GradeTooLow());
 	this->_grade = grade;
 }
 
@@ -64,19 +69,19 @@ std::ostream	&operator<<( std::ostream &o, const Bureaucrat &b )
 	return (o);
 }
 
-void	Bureaucrat::signForm( Form &f )
+Bureaucrat::~Bureaucrat()
+{
+}
+
+void Bureaucrat::signForm( Form &f ) const
 {
 	try
 	{
 		f.beSigned(*this);
-		std::cout << this->_name << " signed " << f.getName() << std::endl;
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << this->_name << " couldn't sign " << f.getName() << " because " << e.what() << std::endl;
+		std::cout << e.what() << '\n';
 	}
-}
-
-Bureaucrat::~Bureaucrat()
-{
+	
 }
