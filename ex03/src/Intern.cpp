@@ -41,9 +41,11 @@ AForm*	Intern::makeForm( std::string form, std::string target )
 	while (i < 4 && s[i].compare(form) != 0)
 		i++;
 	if (i < 3)
+	{
+		std::cout << "Intern creates " << s[i] << std::endl;
 		return((this->*p[i])(target));
+	}
 	else
-		std::cout << form << " is not a valid name for a form!" << std::endl;
-	std::cout << i << std::endl;
+		std::cout << "Exception: " << form << " is not a valid name for a form!" << std::endl;
 	return (NULL);
 }
