@@ -1,4 +1,4 @@
-NAME			=	Form
+NAME			=	Intern
 
 SRC_DIR		=	./src/
 OBJ_DIR		=	obj/

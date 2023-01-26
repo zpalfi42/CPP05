@@ -7,8 +7,8 @@
 int	main( void )
 {
 	AForm		*shrub = new ShrubberyCreationForm("home");
-	Bureaucrat	corr("Correcteur", 1);
-	Bureaucrat	me("Lucie", 140);
+	Bureaucrat	corr("Corrector", 1);
+	Bureaucrat	me("Me", 140);
 
 	corr.executeForm(*shrub);
 	std::cout << std::endl;
@@ -22,8 +22,8 @@ int	main( void )
 	std::cout << std::endl;
 	std::cout << std::endl;
 
-	AForm		*robotomy = new RobotomyRequestForm("Correcteur");
-	Bureaucrat	me2("Lucie", 1);
+	AForm		*robotomy = new RobotomyRequestForm("Corrector");
+	Bureaucrat	me2("Me", 1);
 
 	me2.executeForm(*robotomy);
 	me2.signForm(*robotomy);
@@ -36,8 +36,8 @@ int	main( void )
 	std::cout << std::endl;
 	std::cout << std::endl;
 
-	AForm		*presidential = new PresidentialPardonForm("Correcteur");
-	Bureaucrat	me3("Lucie", 6);
+	AForm		*presidential = new PresidentialPardonForm("Corrector");
+	Bureaucrat	me3("Me", 6);
 
 	me3.executeForm(*presidential);
 	me3.signForm(*presidential);

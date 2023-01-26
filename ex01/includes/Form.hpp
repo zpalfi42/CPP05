@@ -12,6 +12,8 @@ private:
 	bool				_sign;
 	const int			_gradeSign;
 	const int			_gradeExec;
+	int	static const	_minGrade = 150;
+	int	static const	_maxGrade = 1;
 public:
 	/* Orthodoxal Canonical needs */
 	Form( void );

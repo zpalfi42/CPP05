@@ -28,7 +28,7 @@ void	ShrubberyCreationForm::execute( const Bureaucrat &executor ) const
 	this->AForm::checkExec(executor);
 	std::fstream	fileout;
 
-	fileout.open((this->_target + "hrubbery").c_str(), std::ios::out);
+	fileout.open((this->_target + "_shrubbery").c_str(), std::ios::out);
 	if (!fileout)
 		throw(FileNotOpen());
 	fileout << "      *           *           *           *" << std::endl;

@@ -10,13 +10,13 @@ Form::Form( const Form &f ): _name(f._name), _sign(false), _gradeSign(f._gradeSi
 
 Form::Form( std::string name, int gradeS, int gradeE): _name(name), _sign(false), _gradeSign(gradeS), _gradeExec(gradeE)
 {
-	if (gradeS < 1)
+	if (gradeS < this->_maxGrade)
 		throw (GradeTooHigh());
-	if (gradeS > 150)
+	if (gradeS > this->_minGrade)
 		throw(GradeTooLow());
-	if (gradeE < 1)
+	if (gradeE < this->_maxGrade)
 		throw (GradeTooHigh());
-	if (gradeE > 150)
+	if (gradeE > this->_minGrade)
 		throw(GradeTooLow());
 }
 

@@ -13,6 +13,8 @@ class Bureaucrat
 private:
 	std::string	const	_name;
 	int					_grade;
+	int	static const	_minGrade = 150;
+	int	static const	_maxGrade = 1;
 public:
 	/* Orthodoxal Canonical needs */
 	Bureaucrat( void );

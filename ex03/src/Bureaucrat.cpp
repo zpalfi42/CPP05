@@ -22,14 +22,14 @@ int		Bureaucrat::getGrade( void ) const
 
 void	Bureaucrat::downGrade( void )
 {
-	if (this->_grade + 1 > 150)
+	if (this->_grade + 1 > this->_minGrade)
 		throw (GradeTooLow());
 	this->_grade++;
 }
 
 void	Bureaucrat::upGrade( void )
 {
-	if (this->_grade - 1 < 1)
+	if (this->_grade - 1 < this->_maxGrade)
 		throw (GradeTooHigh());
 	this->_grade--;
 }
@@ -40,9 +40,9 @@ Bureaucrat::Bureaucrat( void ): _name("Undefined"), _grade(1)
 
 Bureaucrat::Bureaucrat( std::string name, int grade ): _name(name)
 {
-	if (grade < 1)
+	if (grade < this->_maxGrade)
 		throw (GradeTooHigh());
-	if (grade > 150)
+	if (grade > this->_minGrade)
 		throw(GradeTooLow());
 	this->_grade = grade;
 }
